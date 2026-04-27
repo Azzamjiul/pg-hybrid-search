@@ -9,10 +9,10 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: bq_vector
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./sql:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U my_user -d my_db"]
       interval: 10s
